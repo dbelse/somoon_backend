@@ -8,5 +8,5 @@
 # ignore node_modules
 node_modules
 
-# ignore env
-.env
+# ignore config
+src/app/mysql/config/*
