@@ -6,7 +6,7 @@
 ### 느낌표(!)로 시작하는 패턴의 파일은 무시하지 않는다.
 
 # ignore node_modules
-node_modules/
+node_modules
 
 # ignore env
 .env
