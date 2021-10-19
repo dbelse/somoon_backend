@@ -1,3 +1,5 @@
+// Sequelize를 이용해 DB 연결
+// java에서 conn해주는거랑 비슷한듯?
 const dbConfig = require('../config/config.js');
 const Sequelize = require('sequelize');
 
@@ -21,6 +23,8 @@ const sequelizeConfig = new Sequelize(
 const db = {};
 db.sequelize = Sequelize;
 db.sequelizeConfig = sequelizeConfig;
-db.tutorial = require('./model.js')(sequelizeConfig, Sequelize);
+
+//db.tutorial = require('./tutorial.js')(sequelizeConfig, Sequelize);
+//db.Remodeling = require('./Remodeling.js')(sequelizeConfig, Sequelize);
 
 module.exports = db;
