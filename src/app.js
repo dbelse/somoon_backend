@@ -1,5 +1,3 @@
-//import routers from "./app/mysql/route/index.js";
-
 const express = require('express');
 const cors = require('cors');
 const routers = require('./app/mysql/route/index');

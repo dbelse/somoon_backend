@@ -1,5 +1,5 @@
 const db = require('../model/index.js');
-const Remodeling = db.Remodeling;
+const Remodeling = require('../model/Remodeling.js')(db.sequelizeConfig, db.sequelize);
 const Op = db.sequelize.Op;
 
 //Create Remodeling
@@ -12,12 +12,12 @@ exports.create = (req, res) => {
         return;
     }
 
-    //Set tutorial
+    //Set Remodeling
     const remodeling = {
         Title: req.body.title,
     };
 
-    //Save tutorial
+    //Save Remodeling
     Remodeling
         .create(remodeling)
         .then(data => {

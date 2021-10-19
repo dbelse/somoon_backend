@@ -23,7 +23,8 @@ const sequelizeConfig = new Sequelize(
 const db = {};
 db.sequelize = Sequelize;
 db.sequelizeConfig = sequelizeConfig;
-db.tutorial = require('./tutorial.js')(sequelizeConfig, Sequelize);
-db.Remodeling = require('./Remodeling.js')(sequelizeConfig, Sequelize);
+
+//db.tutorial = require('./tutorial.js')(sequelizeConfig, Sequelize);
+//db.Remodeling = require('./Remodeling.js')(sequelizeConfig, Sequelize);
 
 module.exports = db;
