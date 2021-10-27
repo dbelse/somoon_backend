@@ -1,5 +1,5 @@
 const db = require('../model/index.js');
-const Remodeling = require('../model/Remodeling.js')(db.sequelizeConfig, db.sequelize);
+const Remodeling = require('../model/remodeling.js')(db.sequelizeConfig, db.sequelize);
 const Op = db.sequelize.Op;
 
 //Create Remodeling
