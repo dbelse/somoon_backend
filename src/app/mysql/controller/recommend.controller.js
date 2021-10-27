@@ -26,9 +26,9 @@ exports.create = (req, res) => {
 
     //Set Recommend
     const recommend = {
-        Title: req.body.Title,
-        Path: req.body.Path,
-        Rec_img: req.body.Rec_img
+        title: req.body.title,
+        url: req.body.path,
+        img_path: req.body.img_path
     };
 
     //Save recommend
