@@ -60,3 +60,16 @@ exports.findAll = (req, res) => {
         });
       });
   };
+
+  exports.findAllDisplay = (req, res) => {
+    Recommend.findAll({ where: { display: true } })
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving tutorials."
+        });
+      });
+  };
