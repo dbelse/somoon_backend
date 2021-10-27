@@ -12,6 +12,10 @@ module.exports = (sequelizeConfig, Sequelize) => {
             img_path: {
                 type: Sequelize.STRING,
                 comment: '사진 경로'
+            },
+            display: {
+                type: Sequelize.BOOLEAN,
+                comment: '메인 노출 여부'
             }
         },{
             charset: "utf8", // 한국어 설정

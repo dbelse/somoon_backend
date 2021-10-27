@@ -7,6 +7,9 @@ router.post('/', recommend.create);
 //Retrieve all tutorials
 router.get('/', recommend.findAll);
 
+//Retrieve display true recommend
+router.get('/display', recommend.findAllDisplay)
+
 /*
 // Retrieve all published Tutorials
 router.get("/published", tutorial.findAllPublished);
