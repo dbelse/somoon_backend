@@ -24,7 +24,14 @@ const db = {};
 db.sequelize = Sequelize;
 db.sequelizeConfig = sequelizeConfig;
 
-//db.tutorial = require('./tutorial.js')(sequelizeConfig, Sequelize);
-//db.Remodeling = require('./Remodeling.js')(sequelizeConfig, Sequelize);
+// 모델 설정
+db.tutorial = require('./tutorial.js')(sequelizeConfig, Sequelize);
+db.remodeling = require('./remodeling.js')(sequelizeConfig, Sequelize);
+db.review = require('./review.js')(sequelizeConfig, Sequelize);
+db.remodeling_apply= require('./remodeling_apply.js')(sequelizeConfig, Sequelize);
+db.recommend= require('./recommend.js')(sequelizeConfig, Sequelize);
+
+// 관계 설정
+db.review.hasOne(db.remodeling_apply, {foreignKey: 'id', source: 'remodeling_apply_id'})
 
 module.exports = db;

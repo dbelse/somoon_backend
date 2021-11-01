@@ -1,5 +1,5 @@
 const db = require('../model/index.js');
-const Recommend= require('../model/recommend.js')(db.sequelizeConfig, db.sequelize);
+const Recommend= db.recommend;
 const Op = db.sequelize.Op;
 
 //Create recommend
@@ -44,7 +44,7 @@ exports.create = (req, res) => {
         });
 };
 
-// Retrieve all recommend's column
+// Retrieve all recommend's row
 exports.findAll = (req, res) => {
     const title = req.query.title;
     var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
