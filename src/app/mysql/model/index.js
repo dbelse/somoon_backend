@@ -28,10 +28,19 @@ db.sequelizeConfig = sequelizeConfig;
 db.tutorial = require('./tutorial.js')(sequelizeConfig, Sequelize);
 db.remodeling = require('./remodeling.js')(sequelizeConfig, Sequelize);
 db.review = require('./review.js')(sequelizeConfig, Sequelize);
-db.remodeling_apply= require('./remodeling_apply.js')(sequelizeConfig, Sequelize);
-db.recommend= require('./recommend.js')(sequelizeConfig, Sequelize);
+db.remodeling_apply = require('./remodeling_apply.js')(sequelizeConfig, Sequelize);
+db.recommend = require('./recommend.js')(sequelizeConfig, Sequelize);
+db.assign = require('./assign.js')(sequelizeConfig, Sequelize);
+db.company = require('./company.js')(sequelizeConfig, Sequelize);
 
 // 관계 설정
 db.review.hasOne(db.remodeling_apply, {foreignKey: 'id', source: 'remodeling_apply_id'})
+db.remodeling_apply.hasOne(db.review, {foreignKey: 'id', target: 'remodeling_apply_id'})
+
+db.remodeling_apply.hasMany(db.assign, {foreignKey: 'remodeling_apply_id', source: 'id'})
+db.assign.belongsTo(db.remodeling_apply, {foreignKey: 'remodeling_apply_id', target: 'id'})
+
+db.company.hasMany(db.assign, {foreignKey: 'company_id', source: 'id'})
+db.assign.belongsTo(db.company, {foreignKey: 'company_id', target: 'id'})
 
 module.exports = db;
