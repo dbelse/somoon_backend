@@ -4,6 +4,8 @@ const Op = db.sequelize.Op;
 
 // 관계있는 테이블 정의
 const remodeling_apply = db.remodeling_apply;
+const assign = db.assign;
+const company = db.company;
 
 /*
 //Create recommend
@@ -64,7 +66,19 @@ exports.findAll = (req, res) => {
             include: [
                 {
                     model: remodeling_apply,
-                    attributes: ['name', 'address', 'area'] // building_type은 널 값이 많아 생략..
+                    attributes: ['name', 'address', 'area'], // building_type은 널 값이 많아 생략..
+                    include: [
+                        {
+                            model: assign,
+                            attributes: ['company_id'],
+                            include: [
+                                {
+                                    model: company,
+                                    attributes: ['name']
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         })
