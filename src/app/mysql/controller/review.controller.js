@@ -1,4 +1,5 @@
 const db = require('../model/index.js');
+const review = require('../model/review.js');
 const Review= db.review;
 const Op = db.sequelize.Op;
 
@@ -56,7 +57,45 @@ exports.create = (req, res) => {
 // remodeling_apply에서 고객명(name), 주소(address), 주거타입(building_type), 평수(area)
 // remodeling_apply.id = review.remodeling_apply_id 인 row들
 // 가져오기
+/*
 exports.findAll = (req, res) => {
+    const title = req.query.title;
+    var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+  
+    // 안되는 목록
+    // .get_remodeling_apply()
+    // .get_remodeling_applys()
+    // .get_remodeling_applies()
+    // .getremodeling_apply()
+    // .getremodeling_applys()
+    // .getremodeling_applies()
+    // .getremodelingapply()
+    // .getremodelingapplys()
+    // .getremodelingapplies()
+    // .get_Remodeling_Apply()
+    // .get_Remodeling_Applys()
+    // .get_Remodeling_Applies()
+    // .getRemodeling_Apply()
+    // .getRemodeling_Applys()
+    // .getRemodeling_Applies()
+    // .getRemodelingApply()
+    // .getRemodelingApply()
+    // .getRemodelingApplies()
+    // .getRemodeling_apply()
+    Review.getRemodeling_apply()
+    .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving recommends."
+        });
+      });
+  };
+  */
+  
+  exports.findAll = (req, res) => {
     const title = req.query.title;
     var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
   
@@ -67,18 +106,12 @@ exports.findAll = (req, res) => {
                 {
                     model: remodeling_apply,
                     attributes: ['name', 'address', 'area'], // building_type은 널 값이 많아 생략..
-                    include: [
-                        {
-                            model: assign,
-                            attributes: ['company_id'],
                             include: [
                                 {
                                     model: company,
                                     attributes: ['name']
                                 }
                             ]
-                        }
-                    ]
                 }
             ]
         })
