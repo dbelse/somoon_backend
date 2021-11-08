@@ -6,9 +6,6 @@ const Op = db.sequelize.Op;
 const assign = db.assign;
 
 exports.findAllRepresent = (req, res) => {
-    const display = req.query.display;
-    var condition = display ? {display : `${display}`} : null;
-
     assign.findAll(
         { 
             attributes: [
@@ -18,7 +15,7 @@ exports.findAllRepresent = (req, res) => {
             include: [
                 {
                     model: Company,
-                    where: condition,
+                    where: {state : 'true'},
                     attributes: ['name', 'as_warranty', 'represent_img1', 'represent_img2'],
                 }
             ],
