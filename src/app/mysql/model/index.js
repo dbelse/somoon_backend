@@ -34,7 +34,7 @@ db.assign = require('./assign.js')(sequelizeConfig, Sequelize);
 db.company = require('./company.js')(sequelizeConfig, Sequelize);
 
 // 관계 설정
-db.review.hasOne(db.remodeling_apply, {foreignKey: 'id', target: 'remodeling_apply_id'})
+db.review.belongsTo(db.remodeling_apply, {foreignKey: 'remodeling_apply_id', target: 'remodeling_apply_id'})
 db.remodeling_apply.hasOne(db.review, {foreignKey: 'id', target: 'remodeling_apply_id'})
 
 db.remodeling_apply.belongsToMany(db.company, {through: db.assign})
