@@ -43,9 +43,9 @@ db.company.belongsToMany(db.remodeling_apply, {through: db.assign})
 /*
 db.remodeling_apply.hasMany(db.assign, {foreignKey: 'remodeling_apply_id', source: 'id'})
 db.assign.belongsTo(db.remodeling_apply, {foreignKey: 'remodeling_apply_id', target: 'id'})
-
+*/
 db.company.hasMany(db.assign, {foreignKey: 'company_id', source: 'id'})
 db.assign.belongsTo(db.company, {foreignKey: 'company_id', target: 'id'})
-*/
+
 
 module.exports = db;
