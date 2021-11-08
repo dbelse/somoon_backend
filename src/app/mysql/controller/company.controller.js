@@ -6,6 +6,7 @@ const Op = db.sequelize.Op;
 const assign = db.assign;
 
 exports.findAllRepresent = (req, res) => {
+    /*
     assign.findAll(
         { 
             attributes: [
@@ -15,8 +16,10 @@ exports.findAllRepresent = (req, res) => {
             include: [
                 {
                     model: Company,
-                    where: {state : 'true'},
+                    where: {'state' : '1'},
                     attributes: ['name', 'as_warranty', 'represent_img1', 'represent_img2'],
+                    right: true,
+                    required: true
                 }
             ],
             group: ['company_id']
@@ -30,17 +33,21 @@ exports.findAllRepresent = (req, res) => {
             err.message || "Some error occurred while retrieving recommends."
         });
       });
-  
-    /*
+  */
+    
     Company.findAll(
         { 
-            where: condition,
-            attributes: ['name', 'as_warranty', 'represent_img1', 'represent_img2'],
+            where: {'state' : '1'},
+            attributes: ['name', 'as_warranty', 'represent_img1', 'represent_img2', 
+            [db.sequelize.fn('COUNT', db.sequelize.literal('IF(assigns.state = 8, 1, NULL)')), 'construction'],
+            [db.sequelize.fn('COUNT', db.sequelize.literal('IF(assigns.state >= 4, 1, NULL)')), 'counseling']],
             include: [
                 {
-                    model: assign
+                    model: assign,
+                    attributes: []
                 }
-            ]
+            ],
+            group: ['id']
         })
       .then(data => {
         res.send(data);
@@ -51,5 +58,5 @@ exports.findAllRepresent = (req, res) => {
             err.message || "Some error occurred while retrieving recommends."
         });
       });
-      */
+      
   };
