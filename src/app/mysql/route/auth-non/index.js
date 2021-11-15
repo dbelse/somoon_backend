@@ -11,6 +11,7 @@ router.use("/remodeling", RemodelingRouter);
 router.use("/tutorial", tutorialRouter);
 router.use("/recommend", recommendRouter);
 router.use("/review", reviewRouter);
+router.use("/company", companyRouter);
 router.use("/assign", assignRouter);
 
 module.exports = router;
