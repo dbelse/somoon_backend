@@ -49,14 +49,14 @@ exports.findAll = (req, res) => {
 
   exports.findOne = (req, res) => {
     const id = req.params.id;
-  
+    
     assign.findByPk(id)
       .then(data => {
         res.send(data);
       })
       .catch(err => {
         res.status(500).send({
-          message: "Error retrieving Tutorial with id=" + id
+          message: "Error retrieving assign with id=" + id
         });
       });
   };
