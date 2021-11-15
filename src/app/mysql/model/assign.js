@@ -1,6 +1,10 @@
 module.exports = (sequelizeConfig, Sequelize) => {
     //Set Model
     const Assign = sequelizeConfig.define('assign',{
+        id: {
+            type: Sequelize.INTEGER,
+            primaryKey: true
+        },
             state:  {
                 type: Sequelize.INTEGER,
                 comment: '신청 상태'
