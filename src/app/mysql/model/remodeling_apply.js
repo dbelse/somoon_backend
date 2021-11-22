@@ -1,6 +1,6 @@
 module.exports = (sequelizeConfig, Sequelize) => {
     //Set Model
-    const Remodeling_apply = sequelizeConfig.define('remodeling_apply',{
+    const remodeling_apply = sequelizeConfig.define('remodeling_apply',{
             name:  {
                 type: Sequelize.STRING,
                 comment: '고객 이름'
@@ -44,5 +44,5 @@ module.exports = (sequelizeConfig, Sequelize) => {
         }
     );
 
-    return Remodeling_apply;
+    return remodeling_apply;
 };

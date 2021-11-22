@@ -32,6 +32,7 @@ db.remodeling_apply = require('./remodeling_apply.js')(sequelizeConfig, Sequeliz
 db.recommend = require('./recommend.js')(sequelizeConfig, Sequelize);
 db.assign = require('./assign.js')(sequelizeConfig, Sequelize);
 db.company = require('./company.js')(sequelizeConfig, Sequelize);
+db.remodeling_img = require('./remodeling_img')(sequelizeConfig, Sequelize);
 
 // 관계 설정
 db.review.belongsTo(db.remodeling_apply, {foreignKey: 'remodeling_apply_id', target: 'remodeling_apply_id'})
@@ -40,12 +41,12 @@ db.remodeling_apply.hasOne(db.review, {foreignKey: 'id', target: 'remodeling_app
 db.remodeling_apply.belongsToMany(db.company, {through: db.assign})
 db.company.belongsToMany(db.remodeling_apply, {through: db.assign})
 
-/*
-db.remodeling_apply.hasMany(db.assign, {foreignKey: 'remodeling_apply_id', source: 'id'})
-db.assign.belongsTo(db.remodeling_apply, {foreignKey: 'remodeling_apply_id', target: 'id'})
-*/
 db.company.hasMany(db.assign, {foreignKey: 'company_id', source: 'id'})
 db.assign.belongsTo(db.company, {foreignKey: 'company_id', target: 'id'})
 
+db.company.hasMany(db.remodeling, {foreignKey: 'company_id', source: 'id'})
+db.remodeling.belongsTo(db.company, {foreignKey: 'company_id', target: 'id'})
 
+db.remodeling.hasMany(db.remodeling_img, {foreignKey: 'remodeling_id', source: 'id'})
+db.remodeling_img.belongsTo(db.remodeling, {foreignKey: 'remodeling_id', target: 'id'})
 module.exports = db;
