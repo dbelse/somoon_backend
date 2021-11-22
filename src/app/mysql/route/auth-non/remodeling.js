@@ -1,7 +1,8 @@
 const router = require('express').Router();
-const Remodeling = require('../../controller/Remodeling.controller.js');
+const remodeling = require('../../controller/remodeling.controller.js');
 
 //Create tutorial
-router.post('/', Remodeling.create);
+//router.post('/', remodeling.create);
+router.get('/', remodeling.findAll);
 
 module.exports = router;
