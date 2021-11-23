@@ -6,8 +6,33 @@ const Op = db.sequelize.Op;
 const remodeling_img = db.remodeling_img;
 
 exports.findAll = (req, res) => {
-    const company_id = req.body.company_id;
-    var condition = company_id ? { company_id: company_id } : null;
+    const id = req.params.id;
+    var condition = id ? { id: id } : null;
+  
+    remodeling.findAll(
+        { 
+            where: condition,
+            attributes: ['title', 'apartment_name','company_id'],
+            include: [
+                {
+                    model: remodeling_img,
+                    attributes: ['sequence', 'img_path']
+                }
+            ]
+        })
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving recommends."
+        });
+      });
+  };
+  exports.findByCompany = (req, res) => {
+    const id = req.params.id;
+    var condition = id ? { company_id: id } : null;
   
     remodeling.findAll(
         { 

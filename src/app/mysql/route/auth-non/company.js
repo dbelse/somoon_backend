@@ -11,6 +11,7 @@ router.get('/', recommend.findAll);
 
 //Retrieve display true recommend
 router.get('/represent', company.findAllRepresent)
+router.get('/represent/:id', company.findAllRepresent)
 
 /*
 // Retrieve all published Tutorials
