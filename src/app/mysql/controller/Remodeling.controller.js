@@ -12,7 +12,7 @@ exports.findAll = (req, res) => {
     remodeling.findAll(
         { 
             where: condition,
-            attributes: ['title', 'apartment_name','company_id'],
+            attributes: ['title', 'apartment_name','company_id', 'area'],
             include: [
                 {
                     model: remodeling_img,
@@ -37,7 +37,7 @@ exports.findAll = (req, res) => {
     remodeling.findAll(
         { 
             where: condition,
-            attributes: ['title', 'apartment_name','company_id'],
+            attributes: ['title', 'apartment_name','company_id', 'area'],
             include: [
                 {
                     model: remodeling_img,
