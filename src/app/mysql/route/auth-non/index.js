@@ -5,6 +5,7 @@ const recommendRouter = require('./recommend');
 const reviewRouter = require('./review');
 const companyRouter = require('./company');
 const assignRouter = require('./assign');
+const testRouter = require('./test');
 
 const router = Router();
 router.use("/remodeling", RemodelingRouter);
@@ -13,5 +14,6 @@ router.use("/recommend", recommendRouter);
 router.use("/review", reviewRouter);
 router.use("/company", companyRouter);
 router.use("/assign", assignRouter);
+router.use("/test", testRouter);
 
 module.exports = router;
