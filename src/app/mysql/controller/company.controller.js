@@ -12,7 +12,7 @@ exports.findAllRepresent = (req, res) => {
     Company.findAll(
         { 
             where: condition,
-            attributes: ['id', 'name', 'as_warranty', 'represent_img1', 'represent_img2', 
+            attributes: ['id', 'name', 'as_warranty', 'represent_img1', 'represent_img2', 'owner_name', 'address',
             [db.sequelize.fn('COUNT', db.sequelize.literal('IF(assigns.state = 8, 1, NULL)')), 'construction'],
             [db.sequelize.fn('COUNT', db.sequelize.literal('IF(assigns.state >= 4, 1, NULL)')), 'counseling']],
             include: [
